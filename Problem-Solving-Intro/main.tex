@@ -1,0 +1,52 @@
+\documentclass{beamer}
+\usepackage{graphicx,url}
+\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,tikz}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\batchmode
+\usepackage{amsmath,amssymb,enumerate,epsfig,bbm,calc,color,ifthen,capt-of}
+\usetheme{Berlin}
+%-------------------------Titulo/Autores/Orientador------------------------------------------------
+\title[Monash Competitive Programming Club]{Intro to Problem Solving}
+\subtitle {MCPC Workshop}
+\date{}
+\author[Eggeek (Shizhe Zhao)]{
+}
+
+\pgfdeclareimage[height=1.0cm]{icpc-logo}{../icpc.pdf}
+\logo{\pgfuseimage{icpc-logo}\hspace*{0.5cm}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%\setbeamercovered{transparent}
+\beamerdefaultoverlayspecification{<+->}
+% -----------------------------------------------------------------------------
+\begin{document}
+% -----------------------------------------------------------------------------
+
+%---Summary---------------------------------------------------------
+\frame{\titlepage}
+\section[]{}
+% \begin{frame}{Summary}
+%   \tableofcontents
+% \end{frame}
+
+\section{USACO}
+\input{sections/usaco.tex}
+\section{Basic Tactics}
+\input{sections/tactics.tex}
+\section{End}
+\input{sections/end.tex}
+% -----------------------------------------------------------------------------
+\end{document}
+%-----------------------------------------------

@@ -1,0 +1,114 @@
+<div><div class="clearfix"><span class="lfloat _ohe fsxl fwb">Mr. X</span><span class="rfloat _ohf fsxl fwb">25 points</span></div><div><div class="_2f0e">Last valid submission time: 17 June 2019 at 12:44<a class="_2f0f" href="#">[details]</a></div><!-- react-mount-point-unstable --></div><div class="mvm uiP fsm"><p>
+"There's nothing more important than x!", laughs Mr. X as he explains a Boolean expression involving a variable x to you and your classmates. 
+He can't go 5 minutes teaching Boolean algebra without making at least one such "joke"...
+</p>
+
+<p>
+In Mr. X's class, you've been learning about single-variable Boolean expressions, which are made up of the variable x (and its negation), Boolean constants (True/False), and binary Boolean operators. A valid expression is a string in one of the following two forms:
+</p>
+
+<p>
+1) A single term, which is one of the following four characters:
+</p><ul>
+<li> "<code>x</code>": The variable x </li> 
+<li> "<code>X</code>": The negation of the variable x </li> 
+<li> "<code>0</code>": The constant False </li> 
+<li> "<code>1</code>": The constant True </li> 
+</ul>
+<p></p>
+
+<p>
+2) A binary operator joining two valid expressions in the format "<code>([expression][operator][expression])</code>", with the operator being one of the following three characters:
+</p><ul>
+<li> "|": The OR operator (evaluating to True when at least one of its operands is True) </li> 
+<li> "&amp;": The AND operator (evaluating to True when both of its operands are True) </li> 
+<li> "^": The XOR operator (evaluating to True when exactly one of its operands is True) </li> 
+</ul>
+<p></p>
+    
+<p>
+For example, the following expressions are <strong>valid</strong>:
+</p><ul>
+<li> "<code>1</code>" </li>
+<li> "<code>(x^0)</code>" </li>
+<li> "<code>((X&amp;0)|x)</code>" </li>
+</ul>
+<p></p>
+  
+<p>
+While the following expressions are <strong>invalid</strong>:
+</p><ul>
+<li> "<code>(1)</code>" </li>
+<li> "<code>x^0</code>" </li>
+<li> "<code>(X&amp;0|x)</code>" </li>
+</ul>
+<p></p>
+
+<p>
+An upcoming test will feature a valid expression <strong>E</strong> in the above format, which must be evaluated for a certain value of x. 
+However, you've been getting tired of Mr. X and his lame jokes about the importance of x, 
+so you're planning on hacking into his test files and changing the expression so as to make x irrelevant! 
+In particular, you'd like to modify as few characters as possible in <strong>E</strong> such that it ends up still being a valid expression, 
+but such that its overall value doesn't depend on the value of the variable x. You may only change characters in-place into different characters — you may not insert or delete characters.
+</p>
+
+<p>
+For example, the expression "<code>(X|(0&amp;x))</code>" evaluates to True if x is False, and False if x is True. 
+If it were to be changed into "<code>((X&amp;0)&amp;1)</code>" (by modifying its 2nd, 3rd, 4th, 6th, 7th, and 8th characters), then it would evaluate to False regardless of x's value. 
+Though, it's also possible to make its value independent of x by modifying fewer than 6 of its characters.
+</p>
+
+<p>
+Given an expression <strong>E</strong>, what's the minimum number of characters which must be modified? It's possible that no characters may need to be modified at all.
+</p>
+
+
+<h3>Input</h3>
+
+<p>
+Input begins with an integer <strong>T</strong>, the number of tests.
+For each test, there is a line containing the expression <strong>E</strong>.
+</p>
+
+
+<h3>Output</h3>
+
+<p>
+For the <em>i</em>th test, print a line containing "Case #<em>i</em>: "
+followed by a single integer, the minimum number of characters to modify in <strong>E</strong> such that the result is a valid expression whose value doesn't depend on the value of x.
+</p>
+
+
+<h3>Constraints</h3>
+
+<p>
+1 ≤ <strong>T</strong> ≤ 500 <br>
+1 ≤ |<strong>E</strong>| ≤ 300 <br>
+</p>
+
+<h3>Explanation of Sample</h3>
+
+<p>
+The first expression can, for example, be changed to "<code>1</code>" (and would then always evaluate to True).
+</p>
+
+<p>
+The second expression can be left unchanged (as it always evaluates to False).
+</p>
+
+<p>
+The third expression can be left unchanged (as it always evaluates to True).
+</p>
+
+<p>
+The fourth expression can, for example, be changed to "<code>((0^(X&amp;X))|x)</code>" (and would then always evaluate to True).
+</p></div><div><div class="clearfix"><div class="lfloat _ohe fsm fwn fcg"><span class="fsm">Sample input</span><span role="presentation" aria-hidden="true"> · </span><a rel="ignore" href="/hackercup/example/?problem_id=589264531559040&amp;type=input">Download</a></div><div class="rfloat _ohf fsm fwn fcg"><span class="fsm">Sample output</span><span role="presentation" aria-hidden="true"> · </span><a rel="ignore" href="/hackercup/example/?problem_id=589264531559040&amp;type=output">Download</a></div></div><div class="clearfix"><div class="pam _33b6 lfloat _ohe uiBoxGray"><pre class="_33b7">4
+X
+0
+(x|1)
+((1^(X&amp;X))|x)
+</pre></div><div class="pam _33b6 rfloat _ohf uiBoxGray"><pre class="_33b7">Case #1: 1
+Case #2: 0
+Case #3: 0
+Case #4: 1
+</pre></div></div></div></div>

@@ -1,0 +1,52 @@
+<div class="problem-statement-string"><h3>Problem</h3> <p>
+  Someone just won the Code Jam lottery, and we owe them <b>N</b> jamcoins!
+  However, when we tried to print out an oversized check, we encountered a
+  problem. The value of <b>N</b>, which is an integer, includes at least one
+  digit that is a <code>4</code>... and the <code>4</code> key on the keyboard
+  of our oversized check printer is broken.
+</p><p>
+  Fortunately, we have a workaround: we will send our winner two checks for
+  positive integer amounts A and B, such that neither A nor B contains any
+  digit that is a <code>4</code>, and A + B = <b>N</b>. Please help us find any
+  pair of values A and B that satisfy these conditions.
+</p> <h3>Input</h3> <p>
+  The first line of the input gives the number of test cases, <b>T</b>.
+  <b>T</b> test cases follow; each consists of one line with an integer
+  <b>N</b>.
+</p> <h3>Output</h3> <p>
+  For each test case, output one line containing <code>Case #x: A B</code>,
+  where <code>x</code> is the test case number (starting from 1), and
+  <code>A</code> and <code>B</code> are positive integers as described above.
+</p><p>
+  It is guaranteed that at least one solution exists. If there are multiple
+  solutions, you may output any one of them. (See
+  "What if a test case has multiple correct solutions?" in the Competing
+  section of the
+  <a href="https://codingcompetitions.withgoogle.com/codejam/faq">FAQ</a>. This
+  information about multiple solutions will not be explicitly stated in the
+  remainder of the 2019 contest.)
+</p> <h3>Limits</h3> <p>
+  1 ≤ <b>T</b> ≤ 100.<br>
+  Time limit: 10 seconds per test set.<br>
+  Memory limit: 1GB.<br>
+  At least one of the digits of <b>N</b> is a 4.<br></p> <h4>Test set 1 (Visible)</h4> <p>
+  1 &lt; <b>N</b> &lt; 10<sup>5</sup>.<br></p> <h4>Test set 2 (Visible)</h4> <p>
+  1 &lt; <b>N</b> &lt; 10<sup>9</sup>.<br></p> <p>
+Solving the first two test sets for this problem should get you a long way toward advancing.
+The third test set is worth only 1 extra point, for extra fun and bragging rights!
+</p> <h4>Test set 3 (Hidden)</h4> <p>
+  1 &lt; <b>N</b> &lt; 10<sup>100</sup>.<br></p> <h3>Sample</h3> <div class="problem-io-wrapper"><table><tr><td><br> <span class="io-table-header">Input</span> <br>&nbsp;
+  </td> <td><br> <span class="io-table-header">Output</span> <br>&nbsp;
+  </td></tr> <tr><td><pre class="io-content">3
+4
+940
+4444
+
+  </pre></td> <td><pre class="io-content">Case #1: 2 2
+Case #2: 852 88
+Case #3: 667 3777
+
+  </pre></td></tr></table></div> <p>
+  In Sample Case #1, notice that A and B can be the same. The only other
+  possible answers are <code>1 3</code> and <code>3 1</code>.
+</p></div>
