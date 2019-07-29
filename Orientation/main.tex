@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\usepackage{coloremoji}
+\usepackage{graphicx,url}
+\usepackage[brazil]{babel}
+\usepackage{minted}
+\usepackage{inputenc}
+\usepackage{pgf,tikz}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{soul}
+%\usepackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\batchmode
+\usepackage{amsmath,amssymb,enumerate,epsfig,bbm,calc,color,ifthen,capt-of}
+\usetheme{Berlin}
+\definecolor{mygray}{gray}{0.9}
+%-------------------------Titulo/Autores/Orientador------------------------------------------------
+\title[Monash Competitive Programming Club]{Intro to Competitive Programming}
+\subtitle {MCPC Workshop}
+\date{}
+\author[Eggeek (Shizhe Zhao)]{
+}
+
+\pgfdeclareimage[height=1.0cm]{icpc-logo}{../icpc.pdf}
+\logo{\pgfuseimage{icpc-logo}\hspace*{0.5cm}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%\setbeamercovered{transparent}
+%\beamerdefaultoverlayspecification{<+->}
+% -----------------------------------------------------------------------------
+\begin{document}
+% -----------------------------------------------------------------------------
+
+%---Summary---------------------------------------------------------
+\frame{\titlepage}
+\section[]{}
+% \begin{frame}{Summary}
+%   \tableofcontents
+% \end{frame}
+
+\section{What}
+\input{sections/what.tex}
+\section{Sugar}
+\input{sections/gs.tex}
+\section{Why}
+\input{sections/why.tex}
+\section{How}
+\input{sections/how.tex}
+\section{End}
+\input{sections/end.tex}
+% -----------------------------------------------------------------------------
+\end{document}
+%-----------------------------------------------

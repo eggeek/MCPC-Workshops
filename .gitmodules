@@ -1,0 +1,3 @@
+[submodule "coloremoji.sty"]
+	path = coloremoji.sty
+	url = https://github.com/alecjacobson/coloremoji.sty.git
