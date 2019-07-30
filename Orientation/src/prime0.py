@@ -1,11 +1,11 @@
 def primes(n):
   p = []
-  for i in range(2,n+1):
+  for i in range(2,n+1):    # is i a prime?
     f = False
-    for j in range(2, i):
+    for j in range(2, i):   # any divisor in [2, i-1]?
       if i % j == 0:
         f = True
         break
-    if not f:
-      p.append(i)
+    if not f:               # no divisor
+      p.append(i)           # yeah, it's a prime!
   return p

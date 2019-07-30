@@ -1,4 +1,4 @@
-frome datetime import datetime
+from datetime import datetime
 from time import sleep
 
 def func(a, b):
