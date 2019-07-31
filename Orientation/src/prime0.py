@@ -1,5 +1,5 @@
 def primes(n):
-  p = []
+  p = []                    # empty prime list at beginning
   for i in range(2,n+1):    # is i a prime?
     f = False
     for j in range(2, i):   # any divisor in [2, i-1]?
