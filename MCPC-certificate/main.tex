@@ -1,0 +1,124 @@
+\documentclass[16pt]{scrartcl}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{pdflscape,setspace,amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calligra}
+\usepackage{tgschola}
+\usepackage{fourier-orns}
+\usepackage{graphicx}
+\usepackage{wallpaper}
+\usepackage[normalem]{ulem}
+\usepackage{charter}
+\usepackage{microtype}
+\hyphenpenalty 100000
+%=============================
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+%=============================
+\usepackage{datatool}
+\DTLloaddb{names}{winnerlist.csv}
+%=============================
+\def\signature#1#2{
+  \parbox[b]{1in}{\calligra \smash{#1}\vskip12pt}
+\hfill \parbox[t]{2.8in}{\shortstack{\vrule width 2.8in height 0.4pt\\\small#2}}
+}
+\def\sigskip{\vskip0.4in plus 0.1in}
+        \def\beginskip{\vskip0.5875in plus 0.1in}
+%=============================
+\definecolor{title}{RGB}{180,0,0}
+\definecolor{other}{RGB}{0,0,0}
+\definecolor{name}{RGB}{255,0,0}
+\definecolor{phd}{RGB}{0,0,240}
+%=============================
+\begin{document}
+%=============================
+\DTLforeach{names}{
+%\dg=degree, \name=Name, \dgn=Dgn, \sub=subject, \inst=inst, \place=place}{
+\name=Name,\desc=desc}{
+%=============================
+
+\begin{landscape}
+\linespread{2}\selectfont
+\pagestyle{empty}
+\TileWallPaper{1\paperwidth}{1\paperheight}{border.jpg}
+
+\noindent
+\begin{minipage}[l]{1.5in}
+ \includegraphics[width=.72\linewidth]{MonashCrest.pdf}
+\end{minipage}
+\hfill
+%=============================
+\begin{minipage}[c]{6.5in}
+{\centering
+{\onehalfspacing
+    {\LARGE\bfseries {\color{other}{{ Certificate of Achievement }}}}\\%\initfamily
+    %{\calligra Puducherry} -- {\calligra 605 014\\}
+    \vskip0.4em
+    %{\large ISTE Short Term Training Program on\\}
+    {\Large\bfseries\color{phd}{ Monash Collegiate Programming Contest }}}\\
+    \par}
+\end{minipage}
+\hfill
+%=============================
+\begin{minipage}[r]{1.5in}
+\includegraphics[width=\linewidth]{../icpc.pdf}
+\end{minipage}
+\vskip1em
+%=============================
+\begin{minipage}[l]{1.5in}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{6.5in}
+{\centering
+{\onehalfspacing
+    {\Large\bfseries \color{other}{ awarded to Contestant }}\par
+    \vskip0.5em
+    {\color{pink}\Large\decofourleft\quad{\color{blue}\decoone}\quad\decofourright}
+    \par}}
+\end{minipage}
+\hfill
+\begin{minipage}[r]{1.5in}
+\end{minipage}
+\vskip1.8em
+
+\begin{center}
+{\doublespacing 
+
+
+\hfill
+
+\uuline{{\huge\sffamily\bfseries\color{other}{\MakeUppercase{\name}}}}
+
+\hfill
+
+{\huge\sffamily\bfseries\color{name}{\desc}}
+
+\hfill
+
+\emph{\color{other}{24$^{\text{th}}$ August 2019}}
+
+}
+\end{center}
+
+\noindent
+%\beginskip
+{\singlespacing
+\vfil
+\begin{minipage}[l]{2.8in}
+  \sigskip \signature{ Amin Sakzad }
+  {Dr. Amin Sakzad\\ Staff }
+\end{minipage}
+\hfill
+\begin{minipage}[c]{2.8in}
+\sigskip \signature{Shizhe Zhao}{ Shizhe Zhao\\ Coach }
+\end{minipage}
+\hfill
+\begin{minipage}[r]{2.8in}
+\sigskip \signature{Ryan Hechenberg}{ Ryan Hechenberg\\ Coach }
+\end{minipage}}
+%=============================
+\pagebreak
+\end{landscape}
+}
+\end{document} 
