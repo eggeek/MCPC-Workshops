@@ -74,10 +74,10 @@
 \end{center}
 }
 
-\hypertarget{header-n37}{%
-\centering
-\subsection{ \texorpdfstring{Practice Round}{Practice Round} }}
-
+%\hypertarget{header-n37}{%
+%\centering
+%\subsection{ \texorpdfstring{Practice Round}{Practice Round} }}
+%
 \hypertarget{header-n37}{%
 \centering
 \subsection{ \texorpdfstring{24th, August, 2019}{ 24th, August, 2019} }}
@@ -176,18 +176,34 @@ do these mean? Do I need to create files?
   running time based on these info and your compexity analysis to avoid
   \texttt{Time\ Limit\ Exceeded}.
 
-\item Instead of typing on keyboard, a more convenient way for local testing in command line is:
+\item Instead of typing on keyboard, a more convenient way for local testing on command line is:
 
-\begin{minted}[frame=lines, bgcolor=lightgray,fontsize=\footnotesize]{bash}
-./myprogram < sample.in > myoutput
+\begin{minted}[frame=lines, bgcolor=lightgray,fontsize=\footnotesize]{sh}
+python myprogram.py < sample.in > myoutput
 diff myoutput sample.out
 \end{minted}
     where \texttt{<} is redirect all contents of file \texttt{sample.in} to \texttt{standard input}, and \texttt{>} is redirect your \texttt{standard output} to the file \texttt{myoutput},
     and \texttt{diff} is to check the difference between your output and the expected answer.
-\end{itemize}
 
 \item
-  \huge Good Luck \& Have Fun!
+  If you are going to run your script \texttt{myscript.sh} on command line, make sure it has execute permission
+  \begin{minted}[frame=lines, bgcolor=lightgray, fontsize=\footnotesize]{sh}
+chmod u+x myscript.sh
+./myscript.sh
+  \end{minted}
+otherwise, you may get error message \texttt{permission denied: ./myscript.sh}.
 
+\item
+  If your want to run your python script \texttt{myscript.py} by \texttt{./myscript.py},
+    make sure you've added following line at the top of your python file
+\begin{minted}[frame=lines, fontsize=\footnotesize]{python}
+#!/usr/bin/env python
+
+def func():
+  ...
+\end{minted}
+\end{itemize}
+
+\huge Good Luck \& Have Fun!
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 \end{document}
