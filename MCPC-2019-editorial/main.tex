@@ -1,0 +1,68 @@
+\documentclass{beamer}
+\usepackage{graphicx,url}
+\usepackage[brazil]{babel}
+\usepackage{minted}
+\usepackage{inputenc}
+\usepackage{pgf,tikz}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{soul}
+%\usepackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\batchmode
+\usepackage{amsmath,amssymb,enumerate,epsfig,bbm,calc,color,ifthen,capt-of}
+\usetheme{Berlin}
+\definecolor{mygray}{gray}{0.9}
+%-------------------------Titulo/Autores/Orientador------------------------------------------------
+\title[MCPC-2019]{Monash Collegiate Programming Contest - 2019}
+\subtitle{Editorial}
+\date{}
+\author[Eggeek (Shizhe Zhao)]{
+}
+
+\pgfdeclareimage[height=1.0cm]{icpc-logo}{../icpc.pdf}
+\logo{\pgfuseimage{icpc-logo}\hspace*{0.5cm}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%\setbeamercovered{transparent}
+%\beamerdefaultoverlayspecification{<+->}
+% -----------------------------------------------------------------------------
+\begin{document}
+% -----------------------------------------------------------------------------
+
+%---Summary---------------------------------------------------------
+\frame{\titlepage}
+\section[]{}
+% \begin{frame}{Summary}
+%   \tableofcontents
+% \end{frame}
+
+\section{A: Zoom In}
+\input{sections/A.tex}
+
+\section{C: Escher Sequence}
+\input{sections/C.tex}
+
+\section{F: Cow's Landing}
+\input{sections/F.tex}
+
+\section{E: Color Run}
+\input{sections/E.tex}
+
+\section{B: Building for Days}
+\input{sections/B.tex}
+
+\section{D: Attend Dance}
+\input{sections/D.tex}
+
+% -----------------------------------------------------------------------------
+\end{document}
+%-----------------------------------------------

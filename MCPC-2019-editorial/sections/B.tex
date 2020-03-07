@@ -1,0 +1,23 @@
+\begin{frame}{Problem B: Building for Days}
+\small Author: Ryan Hechenberger
+
+Determine:
+\begin{itemize}
+  \item whether a cell is traversable
+  \item the type of a traversable cell: \texttt{vertical hallway},
+  \texttt{horizontal hallway}, \texttt{hallway intersection},
+  \texttt{room}.
+  \item the the type of a non-traversable cell
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problem B: Building for Days}
+\onslide<1-> How to determine the typ of a non-traversable cell?
+
+\onslide<2-> There must be in same connected component!
+
+\onslide<3-> {
+  \texttt{FloodFill}:
+  \inputminted[linenos=true, fontsize=\small, bgcolor=mygray]{python}{./src/floodfill.py}
+}
+\end{frame}

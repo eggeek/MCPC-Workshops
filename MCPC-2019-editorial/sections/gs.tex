@@ -1,0 +1,75 @@
+\begin{frame}{Get lowest bit}
+  \begin{minipage}{\textwidth}
+  \onslide<1-> {
+    The straightforward way:
+    \inputminted[linenos=true, fontsize=\small, bgcolor=mygray, ]{python}{./src/lowb0.py}
+  }
+  \end{minipage}
+
+  \begin{minipage}{.6\textwidth}
+  \onslide<2-> {
+    In competitive programming:
+    \inputminted[linenos=true, fontsize=\small, bgcolor=mygray, ]{python}{./src/lowb.py}
+  }
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Prime Sieve}
+\onslide<1-> {
+  The straightforward way:
+  \inputminted[linenos=true, fontsize=\scriptsize, bgcolor=mygray, ]{python}{./src/prime0.py}
+}
+\onslide<2-> {
+  \small $2+3+2+5+\ldots \approx O(\frac{n^2}{log n})$ (\url{https://oeis.org/A088821})
+}
+\end{frame}
+
+\begin{frame}{Prime Sieve}
+  \onslide<1-> {
+    \small More efficient way:
+    \inputminted[linenos=true, fontsize=\scriptsize, bgcolor=mygray, ]{python}{./src/prime1.py}
+  }
+  \onslide<2-> {
+    \small $\frac{n}{2} + \frac{n}{3} + \ldots + 1 \approx O(nlogn)$ (Harmonic sequence)
+  }
+\end{frame}
+
+\begin{frame}{Prime Sieve}
+  \begin{minipage}{\textwidth}
+  \onslide<1-> {
+    \small In competitive programming:
+    \inputminted[linenos=true, fontsize=\scriptsize, bgcolor=mygray, ]{python}{./src/prime2.py}
+  }
+  \end{minipage}
+  \begin{minipage}{\textwidth}
+    %\setlength\parindent{0pt}
+    \onslide<2-> \small Each number is only sieved by it's minimum divisor once.\\
+    \onslide<3-> \small It's linear!
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{$A+B$}
+\begin{columns}
+  \begin{column}{0.48\columnwidth}
+  \onslide<1-> The straightforward way:
+  \inputminted[linenos=true, fontsize=\scriptsize, bgcolor=mygray, ]{python}{./src/plus0.py}
+  \end{column}
+  \begin{column}{0.48\columnwidth}
+    \onslide<2-> In competitive programming:
+    \inputminted[linenos=true, fontsize=\scriptsize, bgcolor=mygray, ]{python}{./src/plus1.py}
+  \end{column}
+\end{columns}
+
+\begin{columns}
+  \begin{column}{0.6\columnwidth}
+  \onslide<3->
+    \begin{figure}
+      \centering
+      \includegraphics[width=.35\textwidth]{pic/rage.jpeg}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.4\columnwidth}
+    \onslide<3-> \st{Creative!}
+  \end{column}
+\end{columns}
+\end{frame}

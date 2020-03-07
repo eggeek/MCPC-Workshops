@@ -1,0 +1,12 @@
+\begin{frame}{Problem C: Escher Sequence}
+\small  Author: Shizhe Zhao
+
+  \begin{itemize}
+  \item<2-> Brute-Force: try all possible length from $n$ to $2n$: $O(n^2)$
+  \item<3-> Observation: let \texttt{s2=flip(reverse(s))}, then 
+  concated string \texttt{s s2} must be an \texttt{Escher Sequence}.
+  \item<4-> Minimize the length by removing their maximum common part:
+    \texttt{maximize sufix(s) == prefix(s2)}. 
+  \item<5-> Can be done by \texttt{KMP}. (Or other string matching algorithms)
+  \end{itemize}
+\end{frame}
