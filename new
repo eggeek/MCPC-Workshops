@@ -1,0 +1,13 @@
+#!/bin/bash
+template_dir="~/latex-templates"
+cmd="cp -r $template_dir/presentation $1"
+echo $cmd
+eval $cmd
+
+cmd="cp $template_dir/Makefile $1/"
+echo $cmd
+eval $cmd
+
+cmd="cp icpc.pdf $1/"
+echo $cmd
+eval $cmd
