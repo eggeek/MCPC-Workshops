@@ -1,0 +1,224 @@
+% !TEX program = pdflatex
+% !TEX options = -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape "%DOC%"
+\documentclass{beamer}
+\usepackage{hyperref}
+\usepackage{graphicx,url}
+\usepackage{minted}
+\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,tikz}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\batchmode
+\usepackage{amsmath,amssymb,enumerate,epsfig,bbm,calc,color,ifthen,capt-of}
+\usetheme{Berlin}
+
+%-------------------------Titulo/Autores/Orientador------------------------------------------------
+\title[Loop Invariant and Binary Search]{
+  Loop invariant and binary search
+}
+\subtitle {Monash ICPC workshop}
+\date{}
+\author[Shizhe Zhao]{
+  Shizhe Zhao
+}
+
+\pgfdeclareimage[height=1.5cm]{icpc-logo}{icpc.pdf}
+\logo{\pgfuseimage{icpc-logo}\hspace*{0.5cm}}
+
+% -----------------------------------------------------------------------------
+\begin{document}
+% -----------------------------------------------------------------------------
+
+%---Summary---------------------------------------------------------
+\frame{\titlepage}
+
+\begin{frame}[fragile]{Introduction}
+  \begin{minipage}{.37\textwidth}
+    \begin{itemize} 
+      \item Pre-condition
+      \item Invariant, e.g.:
+        \vspace{2mm}
+        \begin{itemize}
+          \item ``is prime''
+          \item $\sum i$
+          \item \ldots
+        \end{itemize}
+      \item Post-condition 
+    \end{itemize}
+  \end{minipage}%
+  \begin{minipage}{.63\textwidth}
+   \begin{minted}[linenos=true, frame=lines, fontsize=\footnotesize]{cpp}
+// prime sieve
+for (int i=2; i<=n; i++) {
+  bool flag = false;
+  for (int j=2; j<i && flag == false; j++) 
+    if (i % j == 0) flag = true;
+  if (flag == false)
+    primes.push_back(i);
+}
+
+// prefix sum
+sum = 0
+for (int i=0; i<n; i++) sum += i;
+   \end{minted} 
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Introduction}
+Facts about ``\emph{invariant}'':
+\begin{itemize}
+  \item backbone of program, help you:
+  \begin{itemize}
+    \item write code elegantly
+    \item understand code fast
+  \end{itemize}
+  \item $90\%$ of my bugs are caused by this
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 1: Prime Sieve}
+\onslide<1-> {
+  \small Naive way:
+  \inputminted[linenos=true, frame=lines, fontsize=\footnotesize]{python}{./src/prime0.py}
+}
+\onslide<2-> {
+  \small $2+3+2+5+\ldots \approx O(\frac{n^2}{log n})$ (\url{https://oeis.org/A088821})
+}
+\end{frame}
+
+\begin{frame}{Example 1: Prime Sieve}
+  \onslide<1-> {
+    \small More efficient way:
+    \inputminted[linenos=true, frame=lines, fontsize=\footnotesize]{python}{./src/prime1.py}
+  }
+  \onslide<2-> {
+    \small $\frac{n}{2} + \frac{n}{3} + \ldots + 1 \approx O(nlogn)$ (Harmonic sequence)
+  }
+\end{frame}
+
+\begin{frame}{Example 1: Prime Sieve}
+  \begin{minipage}{\textwidth}
+  \onslide<1-> {
+    \small Linear prime sieve:
+    \inputminted[linenos=true, frame=lines, fontsize=\footnotesize]{python}{./src/prime2.py}
+  }
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \vspace{2mm}
+    \onslide<2-> \small Each number is only sieved by it's minimum divisor once.\\
+    \onslide<3-> \small It's linear!
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Example 2: \href{https://vjudge.net/contest/361685\#problem/A}{Pairs}}
+\only<1-> {\small Given an array $a$, integer $k$, count the number of pair that $a_i - a_j = k$.
+}
+\only<2-> {
+\inputminted[linenos=true, frame=lines, fontsize=\scriptsize]{python}{./src/pairs.py}
+}
+\end{frame}
+
+\begin{frame}{Binary Search}
+\begin{itemize}
+  \item Most popular topic in tech-interview
+  \item Most common algorithm in your programming life
+  \item More complicated than people expect
+  \begin{itemize}
+    \item Not in standard library
+    \item People hardly ever do it correct!
+    \item So many variants
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How complicated?}
+ Alice and Bob are playing number guessing game,\\
+ \only<2-> {Alice chooses:}
+ \begin{itemize}
+  \item<2-> Alice: an integer in $[1, 100000]$
+  \item<3-> Alice: an integer from a sorted list
+  \item<4-> Alice: a continuous range of integers
+  \item<4-> \ldots
+ \end{itemize}
+
+ \only<5-> {Bob guesses:}
+ \begin{itemize}
+   \item<5-> Bob: what's that 
+   \item<6-> Bob: lower-bound/upper-bound
+   \item<7-> Bob: maximum false less than lower-bound
+   \item<8-> Bob: minimum true larger than upper-bound
+   \item<8-> \ldots
+ \end{itemize}
+
+\only<9->{All combinations!}
+
+\end{frame}
+
+\begin{frame}{Keep in mind}
+\begin{itemize}
+  \item What's your search space at beginning? (precondition)
+  \item How to deal with each branch?(invariant)
+  \item Proof the correctness? (postcondition)
+  \item How to guarantee there is a termination?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{My favoriate pattern}
+  Assuming the game rule: Alice choose an integer, tell Bob true ($\ge$), 
+  or false ($<$).
+\begin{minted}[linenos=true, frame=lines, fontsize=\footnotesize]{python}
+best = None
+while l <= r:         # search space is [l, r]
+  m = (l + r) // 2    # choose middle
+  if check(m) :       # is m >=  
+                      # invariant: all v in [l, r] >=
+    l = m + 1         # shrink search space 
+    best = m          # best so far
+  else:
+    r = m - 1         # shrink search space
+return best
+\end{minted}
+\end{frame}
+
+\begin{frame}{Why \emph{Binary}?}
+  The math model of cost function $C(n)$: 
+  \begin{itemize}
+    \item branch: $C(i)$ or $C(n-i)$, depends on ``feedback''
+    \item choice: $i \in [1\ldots n]$
+    \item worst case: $max(C(i), C(n-1))$
+    \item minimize total cost: $min(\texttt{worst case}_i)$
+  \end{itemize}
+
+  In total:
+  $$
+    C(n) = min(\ max(\ C(i),\ C(n-i)\ )\ )_{i \in [1 \ldots n-1]}
+  $$
+
+  Thus we choose $i=\frac{n}{2}$.
+
+\end{frame}
+  
+\begin{frame}{Coding time}
+
+  Firstly, make sure you know how to deal with IO
+  \begin{itemize}
+    \item \url{https://vjudge.net/contest/361612} (support: \texttt{py, cpp})
+    \item \url{https://vjudge.net/contest/361790} (\texttt{cpp} only)
+  \end{itemize}
+
+  \vspace{5mm}
+
+  Practice problems (support: \texttt{py, cpp}):
+  \begin{itemize}
+    \item \url{https://vjudge.net/contest/361685}
+  \end{itemize}
+
+\end{frame}
+% -----------------------------------------------------------------------------
+\end{document}
+%-----------------------------------------------

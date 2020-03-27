@@ -7,4 +7,6 @@
 *.bbl
 *.aux
 .DS_Store
+*.vrb
+*.synctex.gz
 **/_minted-main
